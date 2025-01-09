@@ -8,11 +8,31 @@ The goal here is to implement Clerk authentication with user profiles and a prot
 - [x] Added `.nvmrc` file for consitent Node version setting
 - [x] Created a frontend `/dashboard` area
 - [x] Add Clerk provider and middleware to protect dashboard
-- [ ] Add Clerk sign up/in routes
+- [x] Add Clerk sign up/in routes
 - [ ] Create a customer collection
 - [ ] Create and push user data into the customer collection on registration
 - [ ] Create customer tiers
 - [ ] Create a collection for content that is protected based on the users tier
+
+## Example ENV
+
+```
+# Added by Payload
+
+# jdbc:
+DATABASE_URL=postgresql://xxx:@localhost:5432/payload-clerk-auth
+
+DATABASE_URI=${DATABASE_URL}
+# Used to encrypt JWT tokens
+PAYLOAD_SECRET=xxxxxxxxx
+# Used to configure CORS, format links and more. No trailing slash
+NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxxx
+CLERK_SECRET_KEY=sk_test_xxxxx
+```
 
 ## Documentation
 
