@@ -8,6 +8,7 @@ The goal here is to implement Clerk authentication with user profiles and a prot
 - [x] Added `.nvmrc` file for consitent Node version setting
 - [x] Created a frontend `/dashboard` area
 - [x] Add Clerk provider and middleware to protect dashboard
+- [ ] Add Clerk sign up/in routes
 - [ ] Create a customer collection
 - [ ] Create and push user data into the customer collection on registration
 - [ ] Create customer tiers
