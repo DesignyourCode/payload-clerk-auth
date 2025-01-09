@@ -9,7 +9,7 @@ The goal here is to implement Clerk authentication with user profiles and a prot
 - [x] Created a frontend `/dashboard` area
 - [x] Add Clerk provider and middleware to protect dashboard
 - [x] Add Clerk sign up/in routes
-- [ ] Create a customer collection
+- [x] Create a customer collection
 - [ ] Create and push user data into the customer collection on registration
 - [ ] Create customer tiers
 - [ ] Create a collection for content that is protected based on the users tier
