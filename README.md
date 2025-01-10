@@ -10,7 +10,7 @@ The goal here is to implement Clerk authentication with user profiles and a prot
 - [x] Add Clerk provider and middleware to protect dashboard
 - [x] Add Clerk sign up/in routes
 - [x] Create a customer collection
-- [ ] Create and push user data into the customer collection on registration
+- [x] Create and push user data into the customer collection on registration
 - [ ] Create customer tiers
 - [ ] Create a collection for content that is protected based on the users tier
 
@@ -39,3 +39,13 @@ CLERK_SECRET_KEY=sk_test_xxxxx
 #### Adding Clerk
 
 In order to add Clerk, we can just follow the standard Clerk integration for NextJS and adjust the `middleware.ts` file as necessary. In our case, we are protecting the `/dashboard` route.
+
+#### Setting up Clerk webhook
+
+We want to make sure that when a user is created we store their data as a custom in the system so we can save their choices later down the line. In our case we can use a Clerk webhook and hit an endpoint that will handle this logic.
+
+We have an endpoint called `/api/create-customer` which will do the heavy lifting for this flow.
+
+In order for Clerk webhook to access your local I am using Pinggy to expose my local to a public URL: https://pinggy.io/docs/ but NGROK etc would also work.
+
+Once the webhook is created in Clerk (using the following guide: https://clerk.com/blog/webhooks-getting-started) and you have the public URL added to the webhook you can then test and check the webhook works. Once this is confirmed as working, you can register within the application and ensure you as a user is added as a customer.

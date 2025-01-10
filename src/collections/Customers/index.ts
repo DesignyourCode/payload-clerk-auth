@@ -6,24 +6,38 @@ import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 export const Customers: CollectionConfig<'pages'> = {
   slug: 'customers',
   access: {
-    create: authenticated,
+    create: () => true, // Allow webhook to create customers
     delete: authenticated,
     read: authenticatedOrPublished,
     update: authenticated,
   },
   admin: {
-    defaultColumns: ['name', 'email'],
-    useAsTitle: 'name',
+    defaultColumns: ['first_name', 'last_name', 'email'],
+    useAsTitle: 'email',
   },
   fields: [
     {
-      name: 'name',
+      name: 'uid',
+      type: 'text',
+      required: true,
+      admin: {
+        readOnly: true,
+      },
+    },
+    {
+      name: 'first_name',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'last_name',
       type: 'text',
       required: true,
     },
     {
       name: 'email',
       type: 'email',
+      required: true,
     },
     {
       name: 'tier',

@@ -677,8 +677,10 @@ export interface Form {
  */
 export interface Customer {
   id: number;
-  name: string;
-  email?: string | null;
+  uid: string;
+  first_name: string;
+  last_name: string;
+  email: string;
   tier?: ('free' | 'pro' | 'enterprise') | null;
   updatedAt: string;
   createdAt: string;
@@ -1152,7 +1154,9 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "customers_select".
  */
 export interface CustomersSelect<T extends boolean = true> {
-  name?: T;
+  uid?: T;
+  first_name?: T;
+  last_name?: T;
   email?: T;
   tier?: T;
   updatedAt?: T;
