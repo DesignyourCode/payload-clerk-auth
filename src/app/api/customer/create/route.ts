@@ -56,6 +56,18 @@ export async function POST(req: Request) {
         return new Response('Customer already exists', { status: 409 })
       }
 
+      // Get free tier first
+      const { docs: freeTiers } = await payload.find({
+        collection: 'tiers',
+        where: {
+          price: { equals: 0 },
+        },
+      })
+
+      if (!freeTiers.length) {
+        console.warn('No free tier found')
+      }
+
       // Create new customer if doesn't exist
       await payload.create({
         collection: 'customers',
@@ -64,7 +76,7 @@ export async function POST(req: Request) {
           first_name: first_name || '',
           last_name: last_name || '',
           email: email_addresses[0]?.email_address,
-          tier: 'free',
+          tier: freeTiers.length ? freeTiers[0].id : undefined,
         },
       })
 
