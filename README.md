@@ -5,7 +5,7 @@ This project is using the official [Payload Website Template](https://github.com
 The goal here is to implement Clerk authentication with user profiles and a protected dashboard without customising the core website template so it is easily comparable. All changes are to be documented in this readme below:
 
 - [x] Updated readme
-- [x] Added `.nvmrc` file for consitent Node version setting
+- [x] Add `.nvmrc` file for consitent Node version setting
 - [x] Created a frontend `/dashboard` area
 - [x] Add Clerk provider and middleware to protect dashboard
 - [x] Add Clerk sign up/in routes
@@ -13,6 +13,8 @@ The goal here is to implement Clerk authentication with user profiles and a prot
 - [x] Create and push user data into the customer collection on registration
 - [x] Create membership tiers
 - [ ] Create a collection for content that is protected based on the users tier
+- [ ] Create a Stripe flow for recurring payments based on the membership tier settings
+- [ ] Create area in dashboard to show selected membership tier information with change option
 
 ## Example ENV
 
