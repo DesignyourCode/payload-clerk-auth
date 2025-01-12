@@ -17,6 +17,7 @@ export interface Config {
     categories: Category;
     users: User;
     customers: Customer;
+    tiers: Tier;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -33,6 +34,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     customers: CustomersSelect<false> | CustomersSelect<true>;
+    tiers: TiersSelect<false> | TiersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -681,7 +683,24 @@ export interface Customer {
   first_name: string;
   last_name: string;
   email: string;
-  tier?: ('free' | 'pro' | 'enterprise') | null;
+  tier?: (number | null) | Tier;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tiers".
+ */
+export interface Tier {
+  id: number;
+  name: string;
+  description: string;
+  features: {
+    feature?: string | null;
+    id?: string | null;
+  }[];
+  price: number;
+  frequency?: ('monthly' | 'yearly' | 'lifetime') | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -788,6 +807,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'customers';
         value: number | Customer;
+      } | null)
+    | ({
+        relationTo: 'tiers';
+        value: number | Tier;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1159,6 +1182,24 @@ export interface CustomersSelect<T extends boolean = true> {
   last_name?: T;
   email?: T;
   tier?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tiers_select".
+ */
+export interface TiersSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  price?: T;
+  frequency?: T;
   updatedAt?: T;
   createdAt?: T;
 }

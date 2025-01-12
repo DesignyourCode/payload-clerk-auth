@@ -41,12 +41,10 @@ export const Customers: CollectionConfig<'pages'> = {
     },
     {
       name: 'tier',
-      type: 'select',
-      options: [
-        { label: 'Free', value: 'free' },
-        { label: 'Pro', value: 'pro' },
-        { label: 'Enterprise', value: 'enterprise' },
-      ],
+      type: 'relationship',
+      relationTo: 'tiers',
+      required: false,
+      hasMany: false,
     },
   ],
   versions: {

@@ -16,7 +16,14 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
@@ -43,6 +50,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
             <SignedOut>
               <SignInButton />
+              <SignUpButton />
             </SignedOut>
             <SignedIn>
               <UserButton />
